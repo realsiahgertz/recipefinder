@@ -1,7 +1,7 @@
 :root {
     --primary-background: white;
     --secondary-background: rgb(27, 119, 27);
-    /* --tertiary-background: rgb(154, 230, 154); */
+    --tertiary-background: rgb(154, 230, 154);
     --primary-text: black;
     --secondary-text: white;
     --line-divider: rgb(49, 159, 49);
@@ -59,6 +59,15 @@ body {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
+header #ice-water {
+    background-image: url("images/ice-water.jpg");
+    background-position: center center;
+    background-size: cover;
+    width: 100%;
+    min-height: 200px;
+    padding: 10px 10px;
+}
+
 /* Main Content Styles */
 .center_text {
     flex: 1;
@@ -105,15 +114,20 @@ body {
  .recipe-card {
     display: inline-block;
     margin: 5px 5px;
-    background-color: var(--secondary-background);
+    background-color: var(--tertiary-background);
     font-family: Arial;
-    line-height: 2;
+    line-height: 1;
     padding: 10px 10px;
     border-radius: 5px;
     text-align: center;
  }
 
- .profile-card div p, .profile-card div h3, .recipe-card div p, .recipe-card div h3 {
+ .recipe-card img {
+    width: 15em;
+    height: auto;
+ }
+
+ .profile-card div p, .profile-card div h3 {
     color: var(--secondary-text);
  }
 
