@@ -3,32 +3,22 @@
     --secondary_background: rgb(27, 119, 27);
     --primary_text: black;
     --secondary_text: white;
-  }
+}
 
 
 .navbar {
     margin-bottom: 0;
     border-radius: 0;
+    background-color: var(--secondary_background);
+    
 }
 
-.row.content {height: 450px}
-
-.sidenav {
-    padding-top: 20px;
-    background-color: var(--primary_background);
-    height: 100%;
+.navbar ul li {
+    display: inline-block;
 }
 
 footer {
     background-color: var(--secondary_background);
     color: var(--secondary_text);
     padding: 15px;
-}
-
-@media screen and (max-width: 767px) {
-    .sidenav {
-    height: auto;
-    padding: 15px;
-    }
-    .row.content {height:auto;} 
 }
