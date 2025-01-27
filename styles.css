@@ -3,22 +3,137 @@
     --secondary_background: rgb(27, 119, 27);
     --primary_text: black;
     --secondary_text: white;
+    --nav-height: 60px;
+    --footer-height: 50px;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navigation Styles */
 .navbar {
-    margin-bottom: 0;
-    border-radius: 0;
     background-color: var(--secondary_background);
-    
+    padding: 0 2rem;
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar ul {
+    list-style: none;
 }
 
 .navbar ul li {
     display: inline-block;
+    margin-right: 2rem;
 }
 
+.navbar ul li a {
+    color: var(--secondary_text);
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar ul li.active a {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Main Content Styles */
+.center_text {
+    flex: 1;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.center_text h1 {
+    font-size: 2.5rem;
+    color: var(--primary_text);
+    margin-bottom: 1rem;
+}
+
+.center_text h3 {
+    font-size: 1.8rem;
+    color: var(--primary_text);
+    margin: 1.5rem 0 1rem 0;
+}
+
+.center_text p {
+    color: var(--primary_text);
+    margin-bottom: 1rem;
+}
+
+.center_text hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 2rem 0;
+}
+
+/* Footer Styles */
 footer {
     background-color: var(--secondary_background);
     color: var(--secondary_text);
-    padding: 15px;
+    padding: 1rem;
+    height: var(--footer-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .navbar {
+        padding: 0 1rem;
+    }
+
+    .navbar ul li {
+        margin-right: 1rem;
+    }
+
+    .navbar ul li a {
+        font-size: 1rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .center_text {
+        padding: 1rem;
+    }
+
+    .center_text h1 {
+        font-size: 2rem;
+    }
+
+    .center_text h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .navbar ul li {
+        margin-right: 0.5rem;
+    }
+
+    .navbar ul li a {
+        padding: 0.3rem 0.6rem;
+    }
 }
