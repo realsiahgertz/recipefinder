@@ -1,8 +1,10 @@
 :root {
-    --primary_background: white;
-    --secondary_background: rgb(27, 119, 27);
-    --primary_text: black;
-    --secondary_text: white;
+    --primary-background: white;
+    --secondary-background: rgb(27, 119, 27);
+    /* --tertiary-background: rgb(154, 230, 154); */
+    --primary-text: black;
+    --secondary-text: white;
+    --line-divider: rgb(49, 159, 49);
     --nav-height: 60px;
     --footer-height: 50px;
 }
@@ -14,7 +16,7 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     min-height: 100vh;
     display: flex;
@@ -23,7 +25,7 @@ body {
 
 /* Navigation Styles */
 .navbar {
-    background-color: var(--secondary_background);
+    background-color: var(--secondary-background);
     padding: 0 2rem;
     height: var(--nav-height);
     display: flex;
@@ -41,7 +43,7 @@ body {
 }
 
 .navbar ul li a {
-    color: var(--secondary_text);
+    color: var(--secondary-text);
     text-decoration: none;
     font-size: 1.1rem;
     padding: 0.5rem 1rem;
@@ -68,31 +70,46 @@ body {
 
 .center_text h1 {
     font-size: 2.5rem;
-    color: var(--primary_text);
+    color: var(--primary-text);
     margin-bottom: 1rem;
 }
 
 .center_text h3 {
     font-size: 1.8rem;
-    color: var(--primary_text);
+    color: var(--primary-text);
     margin: 1.5rem 0 1rem 0;
 }
 
 .center_text p {
-    color: var(--primary_text);
+    color: var(--primary-text);
     margin-bottom: 1rem;
 }
 
 .center_text hr {
     border: none;
-    border-top: 1px solid #eee;
+    border-top: 1px var(--line-divider) solid;
     margin: 2rem 0;
 }
 
+.card {
+    display: inline-block;
+    margin: 5px 5px;
+    background-color: var(--secondary-background);
+    font-family: Arial;
+    line-height: 2;
+    padding: 10px 10px;
+    border-radius: 5px;
+    text-align: center;
+ }
+
+ .card div p, .card div h3 {
+    color: var(--secondary-text);
+ }
+
 /* Footer Styles */
 footer {
-    background-color: var(--secondary_background);
-    color: var(--secondary_text);
+    background-color: var(--secondary-background);
+    color: var(--secondary-text);
     padding: 1rem;
     height: var(--footer-height);
     display: flex;
