@@ -154,7 +154,7 @@ footer {
 
     .navbar ul li a {
         font-size: 1rem;
-        padding: 0.4rem 0.8rem;
+        padding: 0.6rem 0.8rem;
     }
 
     .center_text {
@@ -176,6 +176,6 @@ footer {
     }
 
     .navbar ul li a {
-        padding: 0.3rem 0.6rem;
+        padding: 0.5rem 0.6rem;
     }
 }
