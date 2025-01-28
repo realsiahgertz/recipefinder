@@ -144,7 +144,6 @@ header {
     height: 10em;
     object-fit: cover;
     object-position: center center;
-    height: auto;
     border: 2px solid black;
  }
 
