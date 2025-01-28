@@ -59,13 +59,20 @@ body {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-header #ice-water {
-    background-image: url("images/ice-water.jpg");
+header {
     background-position: center center;
     background-size: cover;
     width: 100%;
     min-height: 200px;
     padding: 10px 10px;
+}
+
+#ice-water {
+    background-image: url("images/ice-water.jpg");
+}
+
+#ramen {
+    background-image: url("images/ramen.jpg");
 }
 
 /* Main Content Styles */
@@ -124,7 +131,9 @@ header #ice-water {
 
  .recipe-card img {
     width: 15em;
-    height: auto;
+    height: 10em;
+    object-fit: cover;
+    object-position: center center;
  }
 
  .profile-card div p, .profile-card div h3 {
