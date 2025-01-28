@@ -168,6 +168,11 @@ footer {
     .center_text h3 {
         font-size: 1.5rem;
     }
+
+    center_text ul,
+    .center_text ol {
+        padding-left: 1.2rem;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -177,5 +182,10 @@ footer {
 
     .navbar ul li a {
         padding: 0.5rem 0.6rem;
+    }
+
+    .center_text ul,
+    .center_text ol {
+        padding-left: 1rem;
     }
 }
