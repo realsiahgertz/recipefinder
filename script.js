@@ -19,5 +19,3 @@ function recipeOfDay(maxId) {
           console.error("Error:", error);
       });
 }
-
-// document.addEventListener("DOMContentLoaded", () => recipeOfDay(2));
