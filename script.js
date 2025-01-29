@@ -1,11 +1,13 @@
-function recipeOfDay() {
+function recipeOfDay(maxId) {
+  const randomId = Math.floor(Math.random() * maxId) + 1;
+
   fetch('catalog.html')
       .then(response => response.text())
       .then(text => {
           let parser = new DOMParser();
           let doc = parser.parseFromString(text, 'text/html');
-          let element = doc.getElementById("1");
-
+          let element = doc.getElementById(randomId.toString());
+          
           if (element) {
               document.getElementById("demo").innerHTML = element.outerHTML;
           } else {
@@ -18,4 +20,4 @@ function recipeOfDay() {
       });
 }
 
-document.addEventListener("DOMContentLoaded", recipeOfDay);
+// document.addEventListener("DOMContentLoaded", () => recipeOfDay(2));
