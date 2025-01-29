@@ -83,6 +83,10 @@ header {
     background-image: url("images/ramen.jpg");
 }
 
+#sandwich {
+    background-image: url("images/sandwich.jpg");
+}
+
 /* Main Content Styles */
 .center_text {
     flex: 1;
