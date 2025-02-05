@@ -85,6 +85,10 @@ header {
     background-image: url("images/ice-water.jpg");
 }
 
+#food-array {
+    background-image: url("images/FoodArray.jpg");
+}
+
 #ramen {
     background-image: url("images/ramen.jpg");
 }
