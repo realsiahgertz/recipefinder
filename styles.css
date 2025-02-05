@@ -59,6 +59,12 @@ body {
     margin-left: auto;
 }
 
+.navbar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+}
+
 .navbar ul li a:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
