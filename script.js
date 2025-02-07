@@ -32,9 +32,8 @@ function filter(event) {
       const cardWrapper = card.parentElement;
       
       const title = card.querySelector('h3').textContent.toLowerCase();
-      const description = card.querySelector('.description').textContent.toLowerCase();
       
-      if (title.includes(searchTerm) || description.includes(searchTerm)) {
+      if (title.includes(searchTerm)) {
           cardWrapper.style.display = '';
       } else {
           cardWrapper.style.display = 'none';
