@@ -1,7 +1,7 @@
 function recipeOfDay(maxId) {
     const date = new Date();
     const dateNumber = date.getDate();
-    const id = maxId % dateNumber + 1;
+    const id = dateNumber % maxId + 1;
     console.log("Id: ", id);
 
   fetch('catalog.html')
