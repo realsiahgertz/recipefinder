@@ -1,15 +1,15 @@
 function recipeOfDay(maxId) {
     const date = new Date();
     const dateNumber = date.getDate();
-    const randomId = Math.floor(Math.random() * maxId) % dateNumber + 1;
-    console.log("Date: ", dateNumber);
+    const id = maxId % dateNumber + 1;
+    console.log("Id: ", id);
 
   fetch('catalog.html')
       .then(response => response.text())
       .then(text => {
           let parser = new DOMParser();
           let doc = parser.parseFromString(text, 'text/html');
-          let element = doc.getElementById(randomId.toString());
+          let element = doc.getElementById(id.toString());
           
           if (element) {
               document.getElementById("demo").innerHTML = element.outerHTML;
