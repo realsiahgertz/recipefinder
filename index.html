@@ -20,26 +20,31 @@
     <img src="images/favicon.ico" alt="Recipe Finder logo" class="logo">
 </nav>
 
-<header id="food-array">
-</header>
+<header id="food-array"></header>
   
 <div class="center_text">    
-
     <h1>Welcome to Recipe Finder!</h1>
     <hr>
-    <h3>Recipe of the Day</h3>
+    <div class="recipe-container">
+        <div class="recipe-section">
+            <h3>Recipe of the Day</h3>
+            <div id="demo">
+                <!-- Recipe of the Day will be displayed here -->
+            </div>
+        </div>
 
-  <div id="demo">
-    <!-- Recipe will be displayed here -->
-</div>
-<script>
-    document.addEventListener("DOMContentLoaded", () => recipeOfDay(5));
-</script>
-  
+        <div class="recipe-section">
+            <h3>Try Something New</h3>
+            <button class="btn" onclick="getRandomRecipe(5)">Surprise Me!</button>
+            <div id="random-recipe">
+                <!-- Random Recipe will be displayed here -->
+            </div>
+        </div>
+    </div>
 </div>
 
 <footer>
-  <p><p>&copy; 2025 Justin Gumbis & Siah Gertz. All rights reserved.</p></p>
+  <p>&copy; 2025 Justin Gumbis & Siah Gertz. All rights reserved.</p>
 </footer>
 
 </body>

@@ -40,3 +40,25 @@ function filter(event) {
       }
   });
 }
+
+function getRandomRecipe(maxId) {
+  const randomId = Math.floor(Math.random() * maxId) + 1;
+  
+  fetch('catalog.html')
+      .then(response => response.text())
+      .then(text => {
+          let parser = new DOMParser();
+          let doc = parser.parseFromString(text, 'text/html');
+          let element = doc.getElementById(randomId.toString());
+          
+          if (element) {
+              document.getElementById("random-recipe").innerHTML = element.outerHTML;
+          } else {
+              document.getElementById("random-recipe").innerHTML = "Recipe not found";
+          }
+      })
+      .catch(error => {
+          document.getElementById("random-recipe").innerHTML = "Error loading recipe";
+          console.error("Error:", error);
+      });
+}
