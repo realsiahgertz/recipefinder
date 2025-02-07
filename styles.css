@@ -177,7 +177,9 @@ header {
     color: var(--secondary-text);
  }
  
-
+ .section {
+    justify-content: center;
+ }
  .btn {
     padding: 10px 20px;
     background-color: var(--secondary-background);
