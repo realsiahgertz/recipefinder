@@ -23,6 +23,13 @@
 
     <div class="center_text">  
         <h1>Catalog</h1>
+        <input 
+    type="text" 
+    id="searchInput" 
+    placeholder="Search recipes..." 
+    onkeyup="filter(event)" 
+    style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid var(--line-divider); border-radius: 4px;"
+/>
         <p>This page will eventually have filters, but for now it just displays all the recipes.</p>
         <p>We might also add the feature of choosing the view format (list vs. tiles).</p>
         <a href="recipes/ice-water.html" id="1">
@@ -66,5 +73,6 @@
     <footer>
         <p><p>&copy; 2025 Justin Gumbis & Siah Gertz. All rights reserved.</p></p>
       </footer>
+      <script>src="script.js"</script>
 </body>
 </html>

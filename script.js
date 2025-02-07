@@ -22,3 +22,22 @@ function recipeOfDay(maxId) {
           console.error("Error:", error);
       });
 }
+
+function filter(event) {
+  const searchTerm = event.target.value.toLowerCase();
+  
+  const recipeCards = document.querySelectorAll('.recipe-card');
+  
+  recipeCards.forEach(card => {
+      const cardWrapper = card.parentElement;
+      
+      const title = card.querySelector('h3').textContent.toLowerCase();
+      const description = card.querySelector('.description').textContent.toLowerCase();
+      
+      if (title.includes(searchTerm) || description.includes(searchTerm)) {
+          cardWrapper.style.display = '';
+      } else {
+          cardWrapper.style.display = 'none';
+      }
+  });
+}
