@@ -101,41 +101,20 @@ header {
     background-image: url("images/mac-n-cheese2.jpg");
 }
 
-#chocolate-cake {
-    background-image: url("images/chocolate-cake2.jpg");
-}
-
 /* Main Content Styles */
-.recipe-container {
-    display: flex; /* Enable flexbox layout */
-    justify-content: space-between; /* Add space between the items */
-    gap: 20px; /* Optional: Adjust spacing between items */
-}
-
-.recipe-section {
-    flex: 1; /* Make each section take up equal space */
-    text-align: center;
-    padding: 1rem;
-    background-color: var(--tertiary-background);
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Ensure the container doesn’t collapse for larger screens */
 .center_text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex: 1;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
     width: 100%;
 }
 
-@media screen and (max-width: 768px) {
-    /* Stack the recipe sections vertically for smaller screens */
-    .recipe-container {
-        flex-direction: column;
-    }
+.section-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 100px;
 }
-
 
 .center_text h1 {
     font-size: 2.5rem;
@@ -197,6 +176,7 @@ header {
  .profile-card div p, .profile-card div h3 {
     color: var(--secondary-text);
  }
+ 
 
  .btn {
     padding: 10px 20px;
