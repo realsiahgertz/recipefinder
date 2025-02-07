@@ -101,6 +101,10 @@ header {
     background-image: url("images/mac-n-cheese2.jpg");
 }
 
+#chocolate-cake {
+    background-image: url("images/chocolate-cake2.jpg");
+}
+
 /* Main Content Styles */
 .center_text {
     flex: 1;
