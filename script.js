@@ -2,7 +2,8 @@ function recipeOfDay(maxId) {
   const randomId = Math.floor(Math.random() * maxId) + 1;
 
   const date = new Date();
-  console.log("Date: ", date);
+  const dateNumber = date.getDate();
+  console.log("Date: ", dateNumber);
 
   fetch('catalog.html')
       .then(response => response.text())
