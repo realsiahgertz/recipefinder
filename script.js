@@ -66,6 +66,29 @@ function recipeOfDay() {
       });
 }
 
+function filter(event) {
+  const searchTerm = event.target.value.toLowerCase();
+  
+  const recipeCards = document.querySelectorAll('.recipe-card');
+  
+  recipeCards.forEach(card => {
+      const cardWrapper = card.parentElement;
+      
+      const title = card.querySelector('h3').textContent.toLowerCase();
+      
+      if (title.includes(searchTerm)) {
+          cardWrapper.style.display = '';
+      } else {
+          cardWrapper.style.display = 'none';
+      }
+  });
+}
+
+function getRandomRecipe(maxId) {
+  const randomId = Math.floor(Math.random() * maxId) + 1;
+}
+
+
 document.addEventListener('DOMContentLoaded', () => {
   updateTotalRecipes();
   recipeOfDay();
