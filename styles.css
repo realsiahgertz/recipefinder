@@ -178,7 +178,7 @@ header {
  }
  
  .section {
-    justify-content: center;
+    text-align: center;
  }
  .btn {
     padding: 10px 20px;
