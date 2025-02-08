@@ -43,6 +43,8 @@ function getRandomRecipe() {
 function recipeOfDay() {
   const date = new Date();
   const id = date.getDate()+date.getMonth()+date.getFullYear() % maxId + 1;
+  console.log("dateNumber: ", dateNumber);
+  console.log("ID: ", id);
   fetch('catalog.html')
       .then(response => response.text())
       .then(text => {
