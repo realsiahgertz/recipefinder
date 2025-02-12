@@ -101,6 +101,10 @@ header {
     background-image: url("images/mac-n-cheese2.jpg");
 }
 
+#pancake {
+    background-image: url("images/pancakes.jpg");
+}
+
 /* Main Content Styles */
 .center_text {
     flex: 1;
