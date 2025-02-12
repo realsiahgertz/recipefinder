@@ -16,7 +16,7 @@ function updateTotalRecipes() {
 }
 
 function getTotalRecipes() {
-  return parseInt(localStorage.getItem('totalRecipes')) || 5; // default to 5 if not set
+  return parseInt(localStorage.getItem('totalRecipes')) || 5;
 }
 
 function getRandomRecipe() {
@@ -27,15 +27,15 @@ function getRandomRecipe() {
           let parser = new DOMParser();
           let doc = parser.parseFromString(text, 'text/html');
           let element = doc.getElementById(randomId.toString());
-          
+         
           if (element) {
-              document.getElementById("random-recipe").innerHTML = element.outerHTML;
+              document.getElementById("demo").innerHTML = element.outerHTML;
           } else {
-              document.getElementById("random-recipe").innerHTML = "Recipe not found";
+              document.getElementById("demo").innerHTML = "Recipe not found";
           }
       })
       .catch(error => {
-          document.getElementById("random-recipe").innerHTML = "Error loading recipe";
+          document.getElementById("demo").innerHTML = "Error loading recipe";
           console.error("Error:", error);
       });
 }
@@ -83,11 +83,6 @@ function filter(event) {
       }
   });
 }
-
-function getRandomRecipe(maxId) {
-  const randomId = Math.floor(Math.random() * maxId) + 1;
-}
-
 
 document.addEventListener('DOMContentLoaded', () => {
   updateTotalRecipes();
