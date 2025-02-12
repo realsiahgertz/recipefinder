@@ -29,13 +29,13 @@ function getRandomRecipe() {
           let element = doc.getElementById(randomId.toString());
          
           if (element) {
-              document.getElementById("demo").innerHTML = element.outerHTML;
+              document.getElementById("random-recipe").innerHTML = element.outerHTML;
           } else {
-              document.getElementById("demo").innerHTML = "Recipe not found";
+              document.getElementById("random-recipe").innerHTML = "Recipe not found";
           }
       })
       .catch(error => {
-          document.getElementById("demo").innerHTML = "Error loading recipe";
+          document.getElementById("random-recipe").innerHTML = "Error loading recipe";
           console.error("Error:", error);
       });
 }
