@@ -16,11 +16,11 @@ function updateTotalRecipes() {
 }
 
 function getTotalRecipes() {
-  return parseInt(localStorage.getItem('totalRecipes')) || 5;
+  return parseInt(localStorage.getItem('totalRecipes')) || 4;
 }
 
 function getRandomRecipe() {
-  const randomId = Math.floor(Math.random() * getTotalRecipes()) + 1;
+  const randomId = Math.floor(Math.random() * getTotalRecipes());
   fetch('catalog.html')
       .then(response => response.text())
       .then(text => {
@@ -43,7 +43,7 @@ function getRandomRecipe() {
 function recipeOfDay() {
   const date = new Date();
   const dateNumber = date.getDate()+date.getMonth()+date.getFullYear();
-  const id = dateNumber % getTotalRecipes() + 1;
+  const id = dateNumber % getTotalRecipes();
   console.log("dateNumber: ", dateNumber);
   console.log("maxId: ", getTotalRecipes());
   console.log("ID: ", id);
