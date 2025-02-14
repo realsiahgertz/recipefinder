@@ -103,7 +103,7 @@ function filterByTag(category) {
     } else {
         const matchingRecipes = document.querySelectorAll('.' + category);
         matchingRecipes.forEach(card => {
-            card.parentElement.style.display = '';
+            card.style.display = '';
         });
     }
 }
