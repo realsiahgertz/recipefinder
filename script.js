@@ -93,11 +93,19 @@ function filterByTag(category) {
         
         cardWrapper.style.display = 'none';
     });
+
+    if (category === 'all') {
+        document.querySelectorAll('.recipe-card').forEach(card => {
+            card.style.display = '';
+        });
+    }
+    else {
     
-    const matchingRecipes = document.querySelectorAll('.' + category);
-    matchingRecipes.forEach(card => {
-        card.style.display = '';
-    });
+        const matchingRecipes = document.querySelectorAll('.' + category);
+        matchingRecipes.forEach(card => {
+            card.style.display = '';
+        });
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
