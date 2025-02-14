@@ -70,6 +70,9 @@ function filter(event) {
   const searchTerm = event.target.value.toLowerCase();
   
   const recipeCards = document.querySelectorAll('.recipe-card');
+
+  console.log("Search term: " + searchTerm);
+    console.log("Recipe cards: " + recipeCards);
   
   recipeCards.forEach(card => {
       const cardWrapper = card.parentElement;
