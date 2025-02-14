@@ -88,24 +88,22 @@ function filter(event) {
 }
 
 function filterByTag(category) {
-    const allRecipes = document.querySelectorAll('.recipe-card').forEach(card => {
+    document.querySelectorAll('.recipe-card').forEach(card => {
         const cardWrapper = card.parentElement;
-        
         cardWrapper.style.display = 'none';
     });
-
-    console.log("Category: " + category);
-
-    if (category == 'all') {
-        document.querySelectorAll('.recipe-card').forEach(card => {
-            card.style.display = '';
-        });
-    }
-    else {
     
+    console.log("Category: " + category);
+    
+    if (category === 'all') {
+        document.querySelectorAll('.recipe-card').forEach(card => {
+            const cardWrapper = card.parentElement;
+            cardWrapper.style.display = '';
+        });
+    } else {
         const matchingRecipes = document.querySelectorAll('.' + category);
         matchingRecipes.forEach(card => {
-            card.style.display = '';
+            card.parentElement.style.display = '';
         });
     }
 }
