@@ -81,6 +81,11 @@ header {
     padding: 10px 10px;
 }
 
+a {
+    display: inline-block;
+    text-decoration: none;
+}
+
 #ice-water {
     background-image: url("images/ice-water.jpg");
 }
@@ -161,7 +166,7 @@ header {
  }
 
  .recipe-card {
-    display: inline-block;
+    /* display: inline-block; */
     margin: 5px 5px;
     background-color: var(--tertiary-background);
     font-family: Arial;
