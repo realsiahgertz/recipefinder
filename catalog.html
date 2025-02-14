@@ -33,18 +33,12 @@
         />
         <h2>Filter by tag</h2>
         <div id="tag-filter">
-            <button onclick="filterByTag('breakfast')" class="btn">
-                Breakfast
-            </button>
-            <button onclick="filterByTag('lunch')" class="btn">
-                Lunch
-            </button>
-            <button onclick="filterByTag('dinner')" class="btn">
-                Dinner
-            </button>
-            <button onclick="filterByTag('dessert')" class="btn">
-                Dessert
-            </button>
+            <button onclick="filterByTag('breakfast')" class="btn">Breakfast</button>
+            <button onclick="filterByTag('lunch')" class="btn">Lunch</button>
+            <button onclick="filterByTag('dinner')" class="btn">Dinner</button>
+            <button onclick="filterByTag('dessert')" class="btn">Dessert</button>
+            <button onclick="showAllRecipes()" class="btn">Show All</button>
+        </div>
 
         <p>This page will eventually have filters, but for now it just displays all the recipes.</p>
         <p>We might also add the feature of choosing the view format (list vs. tiles).</p>
@@ -75,7 +69,7 @@
                 </div>
             </section>
         </a>
-        <a href="recipes/mac-n-cheese.html" id="4" class="lunch" class="dinner">
+        <a href="recipes/mac-n-cheese.html" id="4" class="lunch dinner">
             <section class="recipe-card">
                 <img src="images/mac-n-cheese.jpg"/>
                 <div>
