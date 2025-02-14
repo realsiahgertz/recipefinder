@@ -84,6 +84,19 @@ function filter(event) {
   });
 }
 
+function filterByTag(category) {
+    
+    const recipeCards = document.querySelectorAll('.' + category);
+    
+    recipeCards.forEach(card => {
+        const cardWrapper = card.parentElement;
+        
+        
+        cardWrapper.style.display = '';
+
+    });
+  }
+
 document.addEventListener('DOMContentLoaded', () => {
   updateTotalRecipes();
   recipeOfDay();
