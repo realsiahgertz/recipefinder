@@ -94,7 +94,9 @@ function filterByTag(category) {
         cardWrapper.style.display = 'none';
     });
 
-    if (category === 'all') {
+    console.log("Category: " + category);
+
+    if (category == 'all') {
         document.querySelectorAll('.recipe-card').forEach(card => {
             card.style.display = '';
         });
