@@ -87,10 +87,11 @@ function filter(event) {
 function filterByTag(category) {
     
     const recipeCards = document.querySelectorAll('.' + category);
+    console.log("Category: " + category);
+    console.log("Recipe cards: " + recipeCards);
     
     recipeCards.forEach(card => {
         const cardWrapper = card.parentElement;
-        
         
         cardWrapper.style.display = '';
 
