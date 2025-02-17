@@ -20,6 +20,12 @@ function getTotalRecipes() {
 }
 
 function getRandomRecipe() {
+    const recipeOfDayId = generateRecipeOfDayId();
+    do {
+        const randomId = Math.floor(Math.random() * getTotalRecipes());
+    }
+    while (randomId == recipeOfDayId);
+
   const randomId = Math.floor(Math.random() * getTotalRecipes());
   fetch('catalog.html')
       .then(response => response.text())
@@ -41,29 +47,34 @@ function getRandomRecipe() {
 }
 
 function recipeOfDay() {
-  const date = new Date();
-  const dateNumber = date.getDate()+date.getMonth()+date.getFullYear();
-  const id = dateNumber % getTotalRecipes();
-  console.log("dateNumber: ", dateNumber);
-  console.log("maxId: ", getTotalRecipes());
-  console.log("ID: ", id);
-  fetch('catalog.html')
-      .then(response => response.text())
-      .then(text => {
-          let parser = new DOMParser();
-          let doc = parser.parseFromString(text, 'text/html');
-          let element = doc.getElementById(id.toString());
-          
-          if (element) {
-              document.getElementById("demo").innerHTML = element.outerHTML;
-          } else {
-              document.getElementById("demo").innerHTML = "Recipe not found";
-          }
-      })
-      .catch(error => {
-          document.getElementById("demo").innerHTML = "Error loading recipe";
-          console.error("Error:", error);
-      });
+    const id = generateRecipeOfDayId();
+    console.log("dateNumber: ", dateNumber);
+    console.log("maxId: ", getTotalRecipes());
+    console.log("ID: ", id);
+    fetch('catalog.html')
+        .then(response => response.text())
+        .then(text => {
+            let parser = new DOMParser();
+            let doc = parser.parseFromString(text, 'text/html');
+            let element = doc.getElementById(id.toString());
+            
+            if (element) {
+                document.getElementById("demo").innerHTML = element.outerHTML;
+            } else {
+                document.getElementById("demo").innerHTML = "Recipe not found";
+            }
+        })
+        .catch(error => {
+            document.getElementById("demo").innerHTML = "Error loading recipe";
+            console.error("Error:", error);
+        });
+}
+
+function generateRecipeOfDayId() {
+    const date = new Date();
+    const dateNumber = date.getDate()+date.getMonth()+date.getFullYear();
+    const id = dateNumber % getTotalRecipes();
+    return id;
 }
 
 function filter(event) {
