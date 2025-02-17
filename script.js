@@ -21,12 +21,12 @@ function getTotalRecipes() {
 
 function getRandomRecipe() {
     const recipeOfDayId = generateRecipeOfDayId();
+    const randomId = recipeOfDayId;
     do {
-        const randomId = Math.floor(Math.random() * getTotalRecipes());
+        randomId = Math.floor(Math.random() * getTotalRecipes());
     }
     while (randomId == recipeOfDayId);
 
-  const randomId = Math.floor(Math.random() * getTotalRecipes());
   fetch('catalog.html')
       .then(response => response.text())
       .then(text => {
@@ -48,7 +48,7 @@ function getRandomRecipe() {
 
 function recipeOfDay() {
     const id = generateRecipeOfDayId();
-    console.log("dateNumber: ", dateNumber);
+    // console.log("dateNumber: ", dateNumber);
     console.log("maxId: ", getTotalRecipes());
     console.log("ID: ", id);
     fetch('catalog.html')
