@@ -21,7 +21,7 @@ function getTotalRecipes() {
 
 function getRandomRecipe() {
     const recipeOfDayId = generateRecipeOfDayId();
-    const randomId = recipeOfDayId;
+    let randomId = recipeOfDayId;
     do {
         randomId = Math.floor(Math.random() * getTotalRecipes());
     }
