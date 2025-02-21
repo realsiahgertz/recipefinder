@@ -119,6 +119,10 @@ function filterByTag(category) {
     }
 }
 
+function test() {
+    console.log("Test");
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   updateTotalRecipes();
   recipeOfDay();
