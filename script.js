@@ -119,6 +119,19 @@ function filterByTag(category) {
     }
 }
 
+function catalogWithTag(category) {
+    window.location.href = "catalog.html?filter=" + category;
+}
+
+window.onload = function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const filterCategory = urlParams.get('filter');
+
+    if (filterCategory) {
+        filterByTag(filterCategory);
+    }
+};
+
 function test() {
     console.log("Test");
 }

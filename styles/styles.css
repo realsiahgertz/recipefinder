@@ -126,9 +126,15 @@ a {
     margin: 2rem 0;
 }
 
-.center_buttons button {
-    display: block;
+.center_buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+.center_buttons button {
+    padding: .75em;
+    margin: .25em;
 }
 
 .profile-card {
