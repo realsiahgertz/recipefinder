@@ -3,7 +3,8 @@
 <head>
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
     <title>Catalog</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/backgrounds.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
@@ -24,13 +25,21 @@
     <div class="center_text">  
         <h1>Catalog</h1>
         <input 
-    type="text" 
-    id="searchInput" 
-    placeholder="Search recipes..." 
-    onkeyup="filter(event)" 
-    style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid var(--line-divider); border-radius: 4px;"
-/>
-        <p>This page will eventually have filters, but for now it just displays all the recipes.</p>
+            type="text" 
+            id="searchInput" 
+            placeholder="Search recipes..." 
+            onkeyup="filter(event)" 
+            style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid var(--line-divider); border-radius: 4px;"
+        />
+        <h2>Filter by tag</h2>
+        <div id="tag-filter">
+            <button onclick="filterByTag('breakfast')" class="btn">Breakfast</button>
+            <button onclick="filterByTag('lunch')" class="btn">Lunch</button>
+            <button onclick="filterByTag('dinner')" class="btn">Dinner</button>
+            <button onclick="filterByTag('dessert')" class="btn">Dessert</button>
+            <button onclick="filterByTag('all')" class="btn">Show All</button>
+        </div>
+
         <p>We might also add the feature of choosing the view format (list vs. tiles).</p>
         <a href="recipes/ice-water.html" id="1">
             <section class="recipe-card">
@@ -41,7 +50,7 @@
                 </div>
             </section>
         </a>
-        <a href="recipes/ramen.html" id="2">
+        <a href="recipes/ramen.html" id="2" class="lunch">
             <section class="recipe-card">
                 <img src="images/ramen.jpg"/>
                 <div>
@@ -50,7 +59,7 @@
                 </div>
             </section>
         </a>
-        <a href="recipes/sandwich.html" id="3">
+        <a href="recipes/sandwich.html" id="3" class="lunch">
             <section class="recipe-card">
                 <img src="images/sandwich.jpg"/>
                 <div>
@@ -59,7 +68,7 @@
                 </div>
             </section>
         </a>
-        <a href="recipes/mac-n-cheese.html" id="4">
+        <a href="recipes/mac-n-cheese.html" id="4" class="lunch dinner">
             <section class="recipe-card">
                 <img src="images/mac-n-cheese.jpg"/>
                 <div>
@@ -68,7 +77,7 @@
                 </div>
             </section>
         </a>
-        <a href="recipes/chocolate-cake.html" id="0">
+        <a href="recipes/chocolate-cake.html" id="0" class="dessert">
             <section class="recipe-card">
                 <img src="images/chocolate-cake.jpg"/>
                 <div>
@@ -77,7 +86,7 @@
                 </div>
             </section>
         </a>
-        <a href="recipes/pancake.html" id="5">
+        <a href="recipes/pancake.html" id="5" class="breakfast">
             <section class="recipe-card">
                 <img src="images/pancakes.jpg"/>
                 <div>

@@ -81,32 +81,9 @@ header {
     padding: 10px 10px;
 }
 
-#ice-water {
-    background-image: url("images/ice-water.jpg");
-}
-
-#food-array {
-    background-image: url("images/FoodArray.jpg");
-}
-
-#ramen {
-    background-image: url("images/ramen.jpg");
-}
-
-#sandwich {
-    background-image: url("images/sandwich.jpg");
-}
-
-#mac-n-cheese {
-    background-image: url("images/mac-n-cheese2.jpg");
-}
-
-#chocolate-cake {
-    background-image: url("images/chocolate-cake.jpg");
-}
-
-#pancake {
-    background-image: url("images/pancakes.jpg");
+a {
+    display: inline-block;
+    text-decoration: none;
 }
 
 /* Main Content Styles */
@@ -166,7 +143,7 @@ header {
  }
 
  .recipe-card {
-    display: inline-block;
+    /* display: inline-block; */
     margin: 5px 5px;
     background-color: var(--tertiary-background);
     font-family: Arial;
