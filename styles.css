@@ -149,6 +149,11 @@ header {
     margin: 2rem 0;
 }
 
+.center_buttons button {
+    display: block;
+
+}
+
 .profile-card {
     display: inline-block;
     margin: 5px 5px;
