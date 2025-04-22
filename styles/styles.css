@@ -2,7 +2,10 @@
     --primary-background: white;
     --secondary-background: rgb(27, 119, 27);
     --tertiary-background: rgb(154, 230, 154);
+    /* --tertiary-background: rgb(255, 255, 255); */
+    --on-hover-green: rgba(49, 159, 49, 0.8);
     --primary-text: black;
+    /* --primary-text: rgb(255, 255, 255); */
     --secondary-text: white;
     --line-divider: rgb(49, 159, 49);
     --nav-height: 60px;
@@ -21,6 +24,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: var(--primary-background);
 }
 
 /* Navigation Styles */
@@ -146,7 +150,12 @@ a {
     padding: 10px 10px;
     border-radius: 5px;
     text-align: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
  }
+
+ .profile-card:hover {
+    background-color: var(--on-hover-green);
+}
 
  .recipe-card {
     /* display: inline-block; */
@@ -159,6 +168,7 @@ a {
     text-align: center;
     border-radius: 5px;
     border: 2px solid black;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
  }
 
  .recipe-card img {
@@ -188,7 +198,7 @@ a {
 }
 
 .btn:hover {
-    background-color: rgba(49, 159, 49, 0.8);
+    background-color: var(--on-hover-green);
 }
 
 /* Footer Styles */
