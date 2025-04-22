@@ -49,8 +49,10 @@
         </div>
         <script>
           document.addEventListener("DOMContentLoaded", () => {
-            fetchRecipeOfDay();
-            fetchRandomRecipe();
+            setTimeout(() => {
+              fetchRecipeOfDay();
+              fetchRandomRecipe();
+            }, 100); // delay because page loads before databse is ready
 
             document.getElementById("surprise-button").addEventListener("click", () => {
               fetchRandomRecipe();
