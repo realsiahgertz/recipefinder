@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+        <title>Add recipe</title>
+        <link rel="stylesheet" href="styles/styles.css">
+        <link rel="stylesheet" href="styles/backgrounds.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+        <nav class="navbar">
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="catalog.php">Catalog</a></li>
+                <li class="active"><a href="#">Add Recipe</a></li>
+            </ul>
+            <h2>Recipe Finder</h2>
+            <img src="images/favicon.ico" alt="Recipe Finder logo" class="logo">
+        </nav>
+    
+        <header id="food-array">
+        </header>
+
+        <form action="add_recipe.php" method="post">
+            <input type="text" name="title" placeholder="Recipe Title" required><br>
+            <textarea name="description" placeholder="Short Description" required></textarea><br>
+            <input type="text" name="image" placeholder="Image URL"><br>
+            <input type="text" name="tags" placeholder="Tags (comma separated)"><br>
+            <input type="text" name="page" placeholder="Link to recipe page"><br>
+            <button type="submit">Add Recipe</button>
+        </form>
+
+        <footer>
+            <p><p>&copy; 2025 Justin Gumbis & Siah Gertz. All rights reserved.</p></p>
+          </footer>
+    </body>
+</html>

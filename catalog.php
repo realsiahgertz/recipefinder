@@ -1,5 +1,18 @@
+<?php
+$host = 'localhost';
+$dbname = 'recipe_site'; // your actual database name
+$username = 'root';
+$password = '';
+
+$conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+$stmt = $conn->query("SELECT * FROM recipes");
+$recipes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
 <!doctype html>
 <html>
+
 <head>
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
     <title>Catalog</title>
@@ -14,6 +27,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li class="active"><a href="#">Catalog</a></li>
+            <li><a href="add-recipe.html">Add Recipe</a></li>
         </ul>
         <h2>Recipe Finder</h2>
         <img src="images/favicon.ico" alt="Recipe Finder logo" class="logo">
@@ -22,15 +36,10 @@
     <header id="food-array">
     </header>
 
-    <div class="center_text">  
+    <div class="center_text">
         <h1>Catalog</h1>
-        <input 
-            type="text" 
-            id="searchInput" 
-            placeholder="Search recipes..." 
-            onkeyup="filter(event)" 
-            style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid var(--line-divider); border-radius: 4px;"
-        />
+        <input type="text" id="searchInput" placeholder="Search recipes..." onkeyup="filter(event)"
+            style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid var(--line-divider); border-radius: 4px;" />
         <h2>Filter by tag</h2>
         <div id="tag-filter">
             <button onclick="filterByTag('breakfast')" class="btn">Breakfast</button>
@@ -41,7 +50,20 @@
         </div>
 
         <p>We might also add the feature of choosing the view format (list vs. tiles).</p>
-        <a href="recipes/ice-water.html" id="1">
+        <div id="recipe-container" class="center_text">
+            <?php foreach ($recipes as $recipe): ?>
+                <a href="<?= $recipe['page'] ?>" class="recipe-card-link <?= $recipe['tags'] ?>">
+                    <section class="recipe-card">
+                        <img src="<?= $recipe['image'] ?>" />
+                        <div>
+                            <h3><?= htmlspecialchars($recipe['title']) ?></h3>
+                            <p class="description"><?= htmlspecialchars($recipe['description']) ?></p>
+                        </div>
+                    </section>
+                </a>
+            <?php endforeach; ?>
+        </div>
+        <!-- <a href="recipes/ice-water.html" id="1">
             <section class="recipe-card">
                 <img src="images/ice-water.jpg"/>
                 <div>
@@ -94,12 +116,16 @@
                 <p class="description">Perfect for a cozy breakfast</p>
                 </div>
             </section>
-        </a>
+        </a> -->
     </div>
 
     <footer>
-        <p><p>&copy; 2025 Justin Gumbis & Siah Gertz. All rights reserved.</p></p>
-      </footer>
-      <script src="script.js"></script>
+        <p>
+        <p>&copy; 2025 Justin Gumbis & Siah Gertz. All rights reserved.</p>
+        </p>
+    </footer>
+    <script src="script.js">
+    </script>
 </body>
+
 </html>
