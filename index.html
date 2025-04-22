@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
   <title>Recipe Finder</title>
@@ -9,23 +10,24 @@
   <link rel="stylesheet" href="styles/backgrounds.css">
   <script src="script.js"></script>
 </head>
+
 <body>
 
-<nav class="navbar">
+  <nav class="navbar">
     <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="catalog.php">Catalog</a></li>
-        <li><a href="add-recipe.html">Add Recipe</a></li>
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="catalog.php">Catalog</a></li>
+      <li><a href="add-recipe.html">Add Recipe</a></li>
     </ul>
     <h2>Recipe Finder</h2>
     <img src="images/favicon.ico" alt="Recipe Finder logo" class="logo">
-</nav>
+  </nav>
 
-<header id="food-array">
-</header>
-  
-<div class="center_text">    
+  <header id="food-array">
+  </header>
+
+  <div class="center_text">
 
     <h1>Welcome to Recipe Finder!</h1>
     <hr>
@@ -37,7 +39,7 @@
           <!-- Recipe will be displayed here -->
         </div>
         <script>
-            document.addEventListener("DOMContentLoaded", () => recipeOfDay());
+          document.addEventListener("DOMContentLoaded", () => recipeOfDay());
         </script>
       </div>
 
@@ -46,11 +48,54 @@
         <div id="random-recipe">
         </div>
         <script>
-          document.addEventListener("DOMContentLoaded", () => getRandomRecipe());
-      </script>
-        <button onclick="getRandomRecipe()" class="btn">
+          document.addEventListener("DOMContentLoaded", () => {
+            fetchRecipeOfDay();
+            fetchRandomRecipe();
+
+            document.getElementById("surprise-button").addEventListener("click", () => {
+              fetchRandomRecipe();
+            });
+          });
+
+          function fetchRecipeOfDay() {
+            fetch("get-recipe.php?type=day")
+              .then(res => res.json())
+              .then(recipe => {
+                document.getElementById("demo").innerHTML = recipeCardHTML(recipe);
+              })
+              .catch(() => {
+                document.getElementById("demo").innerText = "Could not load Recipe of the Day.";
+              });
+          }
+
+          function fetchRandomRecipe() {
+            fetch("get-recipe.php?type=random")
+              .then(res => res.json())
+              .then(recipe => {
+                document.getElementById("random-recipe").innerHTML = recipeCardHTML(recipe);
+              })
+              .catch(() => {
+                document.getElementById("random-recipe").innerText = "Could not load random recipe.";
+              });
+          }
+
+          function recipeCardHTML(recipe) {
+            return `
+    <a href="${recipe.page}">
+      <section class="recipe-card">
+        <img src="${recipe.image}" alt="${recipe.title}" />
+        <div>
+          <h3>${recipe.title}</h3>
+          <p class="description">${recipe.description}</p>
+        </div>
+      </section>
+    </a>
+  `;
+          }
+        </script>
+        <button id="surprise-button" class="btn">
           Surprise Me!
-      </button>
+        </button>
       </div>
 
       <div class="section">
@@ -64,12 +109,15 @@
       </div>
 
     </div>
-  
-</div>
 
-<footer>
-  <p><p>&copy; 2025 Justin Gumbis & Siah Gertz. All rights reserved.</p></p>
-</footer>
+  </div>
+
+  <footer>
+    <p>
+    <p>&copy; 2025 Justin Gumbis & Siah Gertz. All rights reserved.</p>
+    </p>
+  </footer>
 
 </body>
+
 </html>
