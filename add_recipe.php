@@ -10,6 +10,7 @@ $image = $_POST['image'];
 $tags = $_POST['tags'];
 $page = $_POST['page'];
 
+// insert new line into the recipe table
 $stmt = $mysqli->prepare("INSERT INTO recipes (title, description, image, tags, page) VALUES (?, ?, ?, ?, ?)");
 $stmt->bind_param("sssss", $title, $description, $image, $tags, $page);
 $stmt->execute();
