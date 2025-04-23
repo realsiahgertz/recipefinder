@@ -2,10 +2,85 @@
 <html>
     <head>
         <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
-        <title>Add recipe</title>
+        <title>Add Recipe</title>
         <link rel="stylesheet" href="styles/styles.css">
         <link rel="stylesheet" href="styles/backgrounds.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .center_text {
+                text-align: center;
+                padding: 20px;
+            }
+
+            .btn {
+                display: inline-block;
+                margin: 10px;
+                padding: 10px 20px;
+                font-size: 16px;
+                color: #fff;
+                background-color: #007BFF;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                text-decoration: none;
+            }
+
+            .btn:hover {
+                background-color: #0056b3;
+            }
+
+            form {
+                margin: 20px auto;
+                padding: 20px;
+                max-width: 600px;
+                background: #f9f9f9;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            form h2, form h3 {
+                margin-bottom: 10px;
+                color: #333;
+            }
+
+            form input, form textarea {
+                width: 100%;
+                padding: 10px;
+                margin: 10px 0;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 14px;
+            }
+
+            form button {
+                width: 100%;
+                padding: 10px;
+                font-size: 16px;
+                color: #fff;
+                background-color: #28a745;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            form button:hover {
+                background-color: #218838;
+            }
+        </style>
+        <script>
+            function toggleForm(type) {
+                const externalForm = document.getElementById('external-recipe-form');
+                const manualForm = document.getElementById('manual-recipe-form');
+                if (type === 'external') {
+                    externalForm.style.display = 'block';
+                    manualForm.style.display = 'none';
+                } else {
+                    externalForm.style.display = 'none';
+                    manualForm.style.display = 'block';
+                }
+            }
+        </script>
     </head>
 
     <body>
@@ -23,17 +98,40 @@
         <header id="food-array">
         </header>
 
-        <form action="add_recipe.php" method="post">
-            <input type="text" name="title" placeholder="Recipe Title" required><br>
-            <textarea name="description" placeholder="Short Description" required></textarea><br>
-            <input type="text" name="image" placeholder="Image URL"><br>
-            <input type="text" name="tags" placeholder="Tags (seperate by space)"><br>
-            <input type="text" name="page" placeholder="Link to recipe page"><br>
-            <button type="submit">Add Recipe</button>
-        </form>
+        <div class="center_text">
+            <h1>Add a Recipe</h1>
+            <p>Select how you want to add the recipe:</p>
+            <button onclick="toggleForm('external')" class="btn">Add from Website</button>
+            <button onclick="toggleForm('manual')" class="btn">Add Manually</button>
+
+            <!-- External Recipe Form -->
+            <form id="external-recipe-form" action="add_recipe.php" method="post" style="display: none;">
+                <h2>Add Recipe from Website</h2>
+                <input type="text" name="title" placeholder="Recipe Title" required><br>
+                <textarea name="description" placeholder="Short Description" required></textarea><br>
+                <input type="text" name="image" placeholder="Image URL"><br>
+                <input type="text" name="tags" placeholder="Tags (separate by space)"><br>
+                <input type="text" name="page" placeholder="Link to recipe page" required><br>
+                <button type="submit">Add Recipe</button>
+            </form>
+
+            <!-- Manual Recipe Form -->
+            <form id="manual-recipe-form" action="add_manual_recipe.php" method="post" style="display: none;">
+                <h2>Add Recipe Manually</h2>
+                <input type="text" name="title" placeholder="Recipe Title" required><br>
+                <textarea name="description" placeholder="Short Description" required></textarea><br>
+                <input type="text" name="image" placeholder="Image URL"><br>
+                <input type="text" name="tags" placeholder="Tags (separate by space)"><br>
+                <h3>Ingredients</h3>
+                <textarea name="ingredients" placeholder="List ingredients, one per line" required></textarea><br>
+                <h3>Directions</h3>
+                <textarea name="directions" placeholder="List directions, one per line" required></textarea><br>
+                <button type="submit">Add Recipe</button>
+            </form>
+        </div>
 
         <footer>
-            <p><p>&copy; 2025 Justin Gumbis & Siah Gertz. All rights reserved.</p></p>
-          </footer>
+            <p>&copy; 2025 Justin Gumbis & Siah Gertz. All rights reserved.</p>
+        </footer>
     </body>
 </html>
