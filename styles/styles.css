@@ -135,6 +135,7 @@ a {
 .center_buttons button {
     padding: .75em;
     margin: .25em;
+    width: 150px
 }
 
 .profile-card {
