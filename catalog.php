@@ -1,8 +1,8 @@
 <?php
-$host = 'localhost';
-$dbname = 'recipe_site'; // your actual database name
-$username = 'root';
-$password = '';
+$host = "sql103.infinityfree.com";
+$username = "if0_38809133";
+$password = "W3gliX0QZba7";
+$dbname = "if0_38809133_recipe_site";
 
 $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -63,60 +63,6 @@ $recipes = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </a>
             <?php endforeach; ?>
         </div>
-        <!-- <a href="recipes/ice-water.html" id="1">
-            <section class="recipe-card">
-                <img src="images/ice-water.jpg"/>
-                <div>
-                <h3>Ice Water</h3>
-                <p class="description">A refreshing glass of water</p>
-                </div>
-            </section>
-        </a>
-        <a href="recipes/ramen.html" id="2" class="lunch">
-            <section class="recipe-card">
-                <img src="images/ramen.jpg"/>
-                <div>
-                <h3>Ramen</h3>
-                <p class="description">A steaming bowl of ramen</p>
-                </div>
-            </section>
-        </a>
-        <a href="recipes/sandwich.html" id="3" class="lunch">
-            <section class="recipe-card">
-                <img src="images/sandwich.jpg"/>
-                <div>
-                <h3>PB&J Sandwich</h3>
-                <p class="description">The timeless classic</p>
-                </div>
-            </section>
-        </a>
-        <a href="recipes/mac-n-cheese.html" id="4" class="lunch dinner">
-            <section class="recipe-card">
-                <img src="images/mac-n-cheese.jpg"/>
-                <div>
-                <h3>Mac-n-Cheese</h3>
-                <p class="description">Creamy mac-n-cheese</p>
-                </div>
-            </section>
-        </a>
-        <a href="recipes/chocolate-cake.html" id="0" class="dessert">
-            <section class="recipe-card">
-                <img src="images/chocolate-cake.jpg"/>
-                <div>
-                <h3>Chocolate Cake</h3>
-                <p class="description">Rich frosted cake!</p>
-                </div>
-            </section>
-        </a>
-        <a href="recipes/pancake.html" id="5" class="breakfast">
-            <section class="recipe-card">
-                <img src="images/pancakes.jpg"/>
-                <div>
-                <h3>Pancakes</h3>
-                <p class="description">Perfect for a cozy breakfast</p>
-                </div>
-            </section>
-        </a> -->
     </div>
 
     <footer>
