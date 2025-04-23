@@ -21,17 +21,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>$title</title>
     <link rel='stylesheet' href='../styles/styles.css'>
     <link rel='stylesheet' href='../styles/backgrounds.css'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
 </head>
 <body>
-    <h1>$title</h1>
-    <h2>Ingredients</h2>
-    <ul>
-        " . implode("\n", array_map(fn($item) => "<li>$item</li>", explode("\n", $ingredients))) . "
-    </ul>
-    <h2>Directions</h2>
-    <ol>
-        " . implode("\n", array_map(fn($step) => "<li>$step</li>", explode("\n", $directions))) . "
-    </ol>
+    <nav class='navbar'>
+        <ul class='nav navbar-nav'>
+            <li><a href='../index.html'>Home</a></li>
+            <li><a href='../about.html'>About</a></li>
+            <li><a href='../catalog.php'>Catalog</a></li>
+            <li><a href='../add-recipe.html'>Add Recipe</a></li>
+        </ul>
+        <h2>Recipe Finder</h2>
+        <img src='../images/favicon.ico' alt='Recipe Finder logo' class='logo'>
+    </nav>
+
+    <header id='" . strtolower(str_replace(' ', '-', $title)) . "' style='background-image: url(\"$image\"); background-size: cover; background-position: center; height: 200px;'>
+    </header>
+
+    <div class='center_text'>
+        <h1>$title</h1>
+        <h2>Description</h2>
+        <p>$description</p>
+        <h2>Ingredients</h2>
+        <ul>
+            " . implode("\n", array_map(fn($item) => "<li>$item</li>", explode("\n", $ingredients))) . "
+        </ul>
+        <h2>Directions</h2>
+        <ol>
+            " . implode("\n", array_map(fn($step) => "<li>$step</li>", explode("\n", $directions))) . "
+        </ol>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Justin Gumbis & Siah Gertz. All rights reserved.</p>
+    </footer>
 </body>
 </html>
 ";
