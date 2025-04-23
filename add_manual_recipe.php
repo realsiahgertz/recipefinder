@@ -1,5 +1,6 @@
 <?php
-$mysqli = new mysqli("localhost", "root", "", "recipe_site");
+// $mysqli = new mysqli("localhost", "root", "", "recipe_site"); local XAMPP use only
+$mysqli = new mysqli("sql103.infinityfree.com", "if0_38809133", "W3gliX0QZba7", "if0_38809133_recipe_site");
 if ($mysqli->connect_error) {
     die("Connection failed: " . $mysqli->connect_error);
 }
