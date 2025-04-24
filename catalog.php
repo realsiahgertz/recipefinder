@@ -1,8 +1,13 @@
 <?php // database connection lines
-$host = "sql103.infinityfree.com";
-$username = "if0_38809133";
-$password = "W3gliX0QZba7";
-$dbname = "if0_38809133_recipe_site";
+// $host = "sql103.infinityfree.com";
+// $username = "if0_38809133";
+// $password = "W3gliX0QZba7";
+// $dbname = "if0_38809133_recipe_site";
+
+$host = "localhost";
+$username = "root";
+$password = "";
+$dbname = "recipe_site";
 
 $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

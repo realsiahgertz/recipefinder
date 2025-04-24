@@ -6,7 +6,66 @@
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/backgrounds.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="script.js"></script>
+    <style>
+        .styled-form {
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 600px;
+            background: var(--tertiary-background);
+            border: 1px solid var(--line-divider);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .styled-form label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .styled-form input, .styled-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid var(--line-divider);
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .styled-form button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: var(--secondary-text);
+            background-color: var(--secondary-background);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .styled-form button:hover {
+            background-color: var(--on-hover-green);
+        }
+
+        .mission {
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 800px;
+            background: var(--tertiary-background);
+            border: 1px solid var(--line-divider);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .mission h2 {
+            margin-bottom: 10px;
+            color: var(--primary-text);
+        }
+
+        .mission p {
+            color: var(--primary-text);
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -25,7 +84,13 @@
 
     <div class="center_text">  
         <h1>About Us</h1>
-        <p> We are Hope College CS students learning how to create websites. </p>
+        <p>We are Hope College CS students learning how to create websites.</p>
+
+        <!-- Mission Section -->
+        <section class="mission">
+            <h2>Our Mission</h2>
+            <p>Our mission is to create a platform where people can discover, share, and enjoy recipes from around the world. We aim to make cooking accessible and enjoyable for everyone, regardless of their skill level.</p>
+        </section>
 
         <section class="profile-card">
             <img src="images/justin.svg" alt="Justin Gumbis" />
@@ -47,10 +112,26 @@
                 document.addEventListener("click", () => test());
             </script>
          </section>
+         <br>
+         <br>
+         <br>
+
+        <!-- Contact Form -->
+        <h2>Contact Us</h2>
+        <p>Have questions or feedback? We'd love to hear from you!</p>
+        <form action="contact.php" method="post" class="styled-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
     </div>
 
     <footer>
-        <p><p>&copy; 2025 Justin Gumbis & Siah Gertz. All rights reserved.</p></p>
-      </footer>
+        <p>&copy; 2025 Justin Gumbis & Siah Gertz. All rights reserved.</p>
+    </footer>
 </body>
 </html>
