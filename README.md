@@ -1,5 +1,7 @@
 "# recipefinder"
 
+This link will take you to the deployed version of our site: http://recipefinder.ct.ws/
+
 Our main changes we wanted to make were ones that made everything more dynamic and less hardcoded. So before we had hardcoded recipes
 and now we have fully dynamic recipe cards being created.
 
