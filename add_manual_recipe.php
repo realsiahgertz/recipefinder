@@ -1,17 +1,27 @@
 <?php
-// $mysqli = new mysqli("localhost", "root", "", "recipe_site"); local XAMPP use only
 $mysqli = new mysqli("sql103.infinityfree.com", "if0_38809133", "W3gliX0QZba7", "if0_38809133_recipe_site");
+// $mysqli = new mysqli("localhost", "root", "", "recipe_site");
 if ($mysqli->connect_error) {
-    die("Connection failed: " . $mysqli->connect_error);
+    die("Database connection failed: " . $mysqli->connect_error);
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $title = $_POST['title'];
-    $description = $_POST['description'];
-    $image = $_POST['image'];
-    $tags = $_POST['tags'];
-    $ingredients = $_POST['ingredients'];
-    $directions = $_POST['directions'];
+    $title = $_POST['title'] ?? '';
+    $description = $_POST['description'] ?? '';
+    $image_source = $_POST['image_source'] ?? 'url';
+    $image = $_POST['image'] ?? '';
+    $tags = $_POST['tags'] ?? '';
+    $ingredients = $_POST['ingredients'] ?? '';
+    $directions = $_POST['directions'] ?? '';
+
+    if (empty($title) || empty($description) || empty($ingredients) || empty($directions)) {
+        die("Error: Missing required fields. Please fill out all required fields.");
+    }
+
+    // If no image provided, use a default
+    if (empty($image)) {
+        $image = "images/default-food.jpg";
+    }
 
     // Save the manual recipe as a new page
     $page = "recipes/" . strtolower(str_replace(' ', '-', $title)) . ".html";
@@ -59,21 +69,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </body>
 </html>
 ";
-    file_put_contents($page, $recipePageContent);
+    if (!file_put_contents($page, $recipePageContent)) {
+        die("Error: Failed to save the recipe page.");
+    }
 
     // Insert into database
     $stmt = $mysqli->prepare("INSERT INTO recipes (title, description, image, tags, page) VALUES (?, ?, ?, ?, ?)");
+    if (!$stmt) {
+        die("Error: Failed to prepare the database query. " . $mysqli->error);
+    }
     $stmt->bind_param("sssss", $title, $description, $image, $tags, $page);
-    $stmt->execute();
+    if (!$stmt->execute()) {
+        die("Error: Failed to execute the database query. " . $stmt->error);
+    }
 
     $stmt->close();
     $mysqli->close();
 
-    echo "Manual recipe added successfully: $title";
-
     header("Location: catalog.php");
     exit();
 } else {
-    echo "Invalid request method.";
+    die("Invalid request method.");
 }
 ?>

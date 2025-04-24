@@ -16,6 +16,48 @@
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .profile-card {
+            display: flex;
+            background-color: var(--secondary-background);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            min-height: 200px; /* Set minimum height */
+        }
+
+        .profile-card img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .profile-card div {
+            flex: 1;
+            min-width: 0; /* Allows text to wrap properly */
+        }
+
+        .profile-card h3 {
+            color: var(--secondary-text);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .profile-card .description {
+            color: var(--secondary-text);
+            margin: 0;
+            word-wrap: break-word;
+        }
 
         .styled-form label {
             font-weight: bold;
@@ -92,34 +134,33 @@
             <p>Our mission is to create a platform where people can discover, share, and enjoy recipes from around the world. We aim to make cooking accessible and enjoyable for everyone, regardless of their skill level.</p>
         </section>
 
-        <section class="profile-card">
-            <img src="images/justin.svg" alt="Justin Gumbis" />
-            <div>
-               
-               <h3>Justin Gumbis</h3>
-               <p class="description">I'm a Junior at Hope and I've spent lots of time learning computer science as well as accounting. My inspiration for this project came from my love of food and cooking. I hope this site makes it easier for people to cook their favorites.</p>
-            </div>
-         </section>
+        <!-- Profile Cards Container -->
+        <div class="profile-container">
+            <section class="profile-card">
+                <img src="images/justin.svg" alt="Justin Gumbis" />
+                <div>
+                    <h3>Justin Gumbis</h3>
+                    <p class="description">I'm a Junior at Hope and I've spent lots of time learning computer science as well as accounting. My inspiration for this project came from my love of food and cooking. I hope this site makes it easier for people to cook their favorites.</p>
+                </div>
+            </section>
 
-        <section class="profile-card">
-            <img src="images/siah.svg" alt="Siah Gertz" />
-            <div>
-               
-               <h3>Siah Gertz</h3>
-               <p class="description">A mediocre developer</p>
-            </div>
-            <script>
-                document.addEventListener("click", () => test());
-            </script>
-         </section>
-         <br>
-         <br>
-         <br>
+            <section class="profile-card">
+                <img src="images/siah.svg" alt="Siah Gertz" />
+                <div>
+                    <h3>Siah Gertz</h3>
+                    <p class="description">I'm a graduating senior here at Hope who thoroughly enjoys web developing and tinkering with projects. As someone who loves to cook, this project was a joy to make.</p>
+                </div>
+                <script>
+                    document.addEventListener("click", () => test());
+                </script>
+            </section>
+        </div>
 
         <!-- Contact Form -->
+         <br>
         <h2>Contact Us</h2>
         <p>Have questions or feedback? We'd love to hear from you!</p>
-        <form action="contact.php" method="post" class="styled-form">
+        <form id="contact-form" action="contact.php" method="post" class="styled-form">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" placeholder="Your Name" required>
             <label for="email">Email:</label>
@@ -127,8 +168,40 @@
             <label for="message">Message:</label>
             <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
             <button type="submit">Send Message</button>
+            <p id="form-response" style="color: red; margin-top: 10px;"></p>
         </form>
     </div>
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', async function (e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            const form = e.target;
+            const formData = new FormData(form);
+            const responseElement = document.getElementById('form-response');
+
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: formData,
+                });
+
+                const text = await response.text();
+                if (response.ok) {
+                    responseElement.style.color = 'green';
+                    responseElement.textContent = text; // Display success message
+                    form.reset(); // Clear the form
+                } else {
+                    responseElement.style.color = 'red';
+                    responseElement.textContent = text; // Display error message
+                }
+            } catch (error) {
+                responseElement.style.color = 'red';
+                responseElement.textContent = 'Failed to send. Please try again later.';
+                console.error('Error:', error);
+            }
+        });
+    </script>
 
     <footer>
         <p>&copy; 2025 Justin Gumbis & Siah Gertz. All rights reserved.</p>

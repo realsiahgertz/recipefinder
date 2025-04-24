@@ -1,13 +1,13 @@
 <?php // database connection lines
-// $host = "sql103.infinityfree.com";
-// $username = "if0_38809133";
-// $password = "W3gliX0QZba7";
-// $dbname = "if0_38809133_recipe_site";
+$host = "sql103.infinityfree.com";
+$username = "if0_38809133";
+$password = "W3gliX0QZba7";
+$dbname = "if0_38809133_recipe_site";
 
-$host = "localhost";
-$username = "root";
-$password = "";
-$dbname = "recipe_site";
+// $host = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "recipe_site";
 
 $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -54,7 +54,6 @@ $recipes = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <button onclick="filterByTag('all')" class="btn">Show All</button>
         </div>
 
-        <p>We might also add the feature of choosing the view format (list vs. tiles).</p>
         <div id="recipe-container" class="center_text">
             <?php foreach ($recipes as $recipe): ?> <!--This is where we create the recipe cards using php instead of hard coding them -->
                 <a href="<?= $recipe['page'] ?>" class="recipe-card-link <?= $recipe['tags'] ?>">

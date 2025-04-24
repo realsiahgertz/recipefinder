@@ -33,6 +33,10 @@ More besic error handling.
 add_manual_recipe.php was created so the user could choose between adding a recipe from another site or a recipe where they input all
 the ingredients and instructions themselves. 
 
+We also implemented extensive error-handling in add_manual_recipe.php, add_recipe.php, get_recipes.php and get_recipe.php to ensure that any errors would be properly displayed.
+
+For a web integration, we used a "mail" api that would actually send an email to my email in the Contact Us form. You can find this in the About page.
+
 If we had more time, it would be a good idea to use user authentication so not everyone visiting the site could just add recipes to it.
 So lets just say that anyone could see and interact with our site even if they are not logged in, but if they wanted to add a recipe 
 they would have to log in first. 

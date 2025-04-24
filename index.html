@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
   <title>Recipe Finder</title>
@@ -9,10 +8,61 @@
   <link rel="stylesheet" href="styles/styles.css">
   <link rel="stylesheet" href="styles/backgrounds.css">
   <script src="script.js"></script>
+  <style>
+    /* New styles for the aside elements */
+    .main-container {
+      display: flex;
+      width: 100%;
+    }
+    
+    aside {
+      width: 250px;
+      padding: 20px;
+      background-color: #f8f8f8;
+      border-right: 1px solid #eaeaea;
+    }
+    
+    aside.right {
+      border-right: none;
+      border-left: 1px solid #eaeaea;
+    }
+    
+    aside h3 {
+      color: var(--secondary-background);
+      margin-bottom: 15px;
+      border-bottom: 1px solid var(--line-divider);
+      padding-bottom: 5px;
+    }
+    
+    .popular-recipes, .cooking-tips {
+      margin-bottom: 30px;
+    }
+    
+    .tip-item, .recipe-item {
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px dashed #ddd;
+    }
+    
+    .tip-item:last-child, .recipe-item:last-child {
+      border-bottom: none;
+    }
+    
+    @media (max-width: 1200px) {
+      aside {
+        width: 200px;
+      }
+    }
+    
+    @media (max-width: 992px) {
+      aside {
+        display: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
-
   <nav class="navbar">
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
@@ -24,102 +74,109 @@
     <img src="images/favicon.ico" alt="Recipe Finder logo" class="logo">
   </nav>
 
-  <header id="food-array">
-  </header>
+  <header id="food-array"></header>
 
-  <div class="center_text">
-
-    <h1>Welcome to Recipe Finder!</h1>
-    <hr>
-    <div class="section-container">
-      <div class="section">
-        <h3>Recipe of the Day</h3>
-
-        <div id="demo">
-          <!-- Recipe will be displayed here -->
+  <div class="main-container">
+    <!-- Left Aside -->
+    <aside class="left">
+           
+      <div class="cooking-tips">
+        <h3>Quick Tips</h3>
+        <div class="tip-item">
+          <p>Always preheat your oven for even cooking</p>
         </div>
-        <script>
-          document.addEventListener("DOMContentLoaded", () => recipeOfDay());
-        </script>
+        <div class="tip-item">
+          <p>Rest meat before slicing for juicier results</p>
+        </div>
       </div>
+    </aside>
 
-      <div class="section">
-        <h3>Try Something New</h3>
-        <div id="random-recipe">
+    <!-- Main Content (unchanged) -->
+    <div class="center_text">
+      <h1>Welcome to Recipe Finder!</h1>
+      <hr>
+      <div class="section-container">
+        <div class="section">
+          <h3>Recipe of the Day</h3>
+          <div id="demo"><!-- Recipe will be displayed here --></div>
+          <script>document.addEventListener("DOMContentLoaded", () => recipeOfDay());</script>
         </div>
-        <script>
-          document.addEventListener("DOMContentLoaded", () => {
-            setTimeout(() => {
-              fetchRecipeOfDay();
-              fetchRandomRecipe();
-            }, 100); // delay because page loads before databse is ready
 
-            document.getElementById("surprise-button").addEventListener("click", () => {
-              fetchRandomRecipe();
+        <div class="section">
+          <h3>Try Something New</h3>
+          <div id="random-recipe"></div>
+          <script>
+            document.addEventListener("DOMContentLoaded", () => {
+              setTimeout(() => {
+                fetchRecipeOfDay();
+                fetchRandomRecipe();
+              }, 100);
+              document.getElementById("surprise-button").addEventListener("click", () => {
+                fetchRandomRecipe();
+              });
             });
-          });
-
-          function fetchRecipeOfDay() {
-            fetch("get-recipe.php?type=day")
-              .then(res => res.json())
-              .then(recipe => {
-                document.getElementById("demo").innerHTML = recipeCardHTML(recipe);
-              })
-              .catch(() => {
-                document.getElementById("demo").innerText = "Could not load Recipe of the Day.";
-              });
-          }
-
-          function fetchRandomRecipe() {
-            fetch("get-recipe.php?type=random")
-              .then(res => res.json())
-              .then(recipe => {
-                document.getElementById("random-recipe").innerHTML = recipeCardHTML(recipe);
-              })
-              .catch(() => {
-                document.getElementById("random-recipe").innerText = "Could not load random recipe.";
-              });
-          }
-
-          function recipeCardHTML(recipe) {
-            return `
-    <a href="${recipe.page}">
-      <section class="recipe-card">
-        <img src="${recipe.image}" alt="${recipe.title}" />
-        <div>
-          <h3>${recipe.title}</h3>
-          <p class="description">${recipe.description}</p>
+            function fetchRecipeOfDay() {
+              fetch("get-recipe.php?type=day")
+                .then(res => res.json())
+                .then(recipe => {
+                  document.getElementById("demo").innerHTML = recipeCardHTML(recipe);
+                })
+                .catch(() => {
+                  document.getElementById("demo").innerText = "Could not load Recipe of the Day.";
+                });
+            }
+            function fetchRandomRecipe() {
+              fetch("get-recipe.php?type=random")
+                .then(res => res.json())
+                .then(recipe => {
+                  document.getElementById("random-recipe").innerHTML = recipeCardHTML(recipe);
+                })
+                .catch(() => {
+                  document.getElementById("random-recipe").innerText = "Could not load random recipe.";
+                });
+            }
+            function recipeCardHTML(recipe) {
+              return `<a href="${recipe.page}"><section class="recipe-card"><img src="${recipe.image}" alt="${recipe.title}" /><div><h3>${recipe.title}</h3><p class="description">${recipe.description}</p></div></section></a>`;
+            }
+          </script>
+          <button id="surprise-button" class="btn">Surprise Me!</button>
         </div>
-      </section>
-    </a>
-  `;
-          }
-        </script>
-        <button id="surprise-button" class="btn">
-          Surprise Me!
-        </button>
-      </div>
 
-      <div class="section">
-        <h3>Explore Meals</h3>
-        <div class="center_buttons">
-          <button onclick="catalogWithTag('breakfast')" class="btn">Breakfast</button>
-          <button onclick="catalogWithTag('lunch')" class="btn">Lunch</button>
-          <button onclick="catalogWithTag('dinner')" class="btn">Dinner</button>
-          <button onclick="catalogWithTag('dessert')" class="btn">Dessert</button>
+        <div class="section">
+          <h3>Explore Meals</h3>
+          <div class="center_buttons">
+            <button onclick="catalogWithTag('breakfast')" class="btn">Breakfast</button>
+            <button onclick="catalogWithTag('lunch')" class="btn">Lunch</button>
+            <button onclick="catalogWithTag('dinner')" class="btn">Dinner</button>
+            <button onclick="catalogWithTag('dessert')" class="btn">Dessert</button>
+          </div>
         </div>
       </div>
-
     </div>
 
+    <!-- Right Aside -->
+    <!-- Right Aside -->
+<aside class="right">
+  
+  <div class="kitchen-hacks">
+    <h3>Kitchen Hacks</h3>
+    <div class="hack-item">
+      <p>🔪 Keep your cutting board from sliding by placing a damp paper towel underneath.</p>
+    </div>
+    <br>
+    <div class="hack-item">
+      <p>🥑 Ripen avocados faster by placing them in a paper bag with a banana.</p>
+    </div>
+    <br>
+    <div class="hack-item">
+      <p>🧄 Easily peel garlic by shaking cloves in a closed container.</p>
+    </div>
+  </div>
+</aside>
   </div>
 
   <footer>
-    <p>
     <p>&copy; 2025 Justin Gumbis & Siah Gertz. All rights reserved.</p>
-    </p>
   </footer>
-
 </body>
-
 </html>
